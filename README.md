@@ -115,6 +115,9 @@ The app now opens on the landing page by default. Use the launch CTA to enter th
 npm run build
 ```
 
+This project is configured for GitHub Pages deployment at:
+- `https://fintie.github.io/AI-Creative-Studio/`
+
 ### Preview production build
 
 ```bash

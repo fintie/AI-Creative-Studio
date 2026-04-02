@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AI Creative Studio</title>
+    <script>
+      const path = location.pathname.replace(/^\/AI-Creative-Studio/, '')
+      const search = location.search || ''
+      const hash = location.hash || ''
+      location.replace('/AI-Creative-Studio/' + (path ? '?p=' + encodeURIComponent(path + search + hash) : ''))
+    </script>
+  </head>
+  <body></body>
+</html>
