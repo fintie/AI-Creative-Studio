@@ -2,12 +2,14 @@
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #f8fafc;
   background:
-    radial-gradient(circle at top, rgba(56, 189, 248, 0.14), transparent 28%),
-    linear-gradient(180deg, #020617 0%, #0f172a 52%, #111827 100%);
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 26%),
+    radial-gradient(circle at right, rgba(236, 72, 153, 0.12), transparent 24%),
+    linear-gradient(180deg, #020617 0%, #0b1221 50%, #0f172a 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
 }
 
 * {
@@ -29,6 +31,16 @@ button {
   font: inherit;
 }
 
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+p {
+  margin: 0;
+}
+
 .app-shell {
   position: relative;
   min-height: 100vh;
@@ -39,14 +51,14 @@ button {
 .aurora {
   position: absolute;
   border-radius: 999px;
-  filter: blur(80px);
-  opacity: 0.35;
+  filter: blur(90px);
+  opacity: 0.38;
   pointer-events: none;
 }
 
 .aurora-a {
-  top: -80px;
-  left: -40px;
+  top: -70px;
+  left: -30px;
   width: 260px;
   height: 260px;
   background: #06b6d4;
@@ -54,49 +66,61 @@ button {
 
 .aurora-b {
   right: -70px;
-  top: 120px;
+  top: 110px;
   width: 280px;
   height: 280px;
   background: #8b5cf6;
+}
+
+.aurora-c {
+  left: 35%;
+  bottom: -120px;
+  width: 320px;
+  height: 220px;
+  background: #ec4899;
 }
 
 .hero {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.8fr);
+  grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
   gap: 24px;
   align-items: end;
   margin-bottom: 24px;
 }
 
 .hero h1 {
-  margin: 8px 0 12px;
-  max-width: 13ch;
-  font-size: clamp(2.4rem, 4vw, 4.7rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  margin: 10px 0 14px;
+  max-width: 12ch;
+  font-size: clamp(2.4rem, 4vw, 4.9rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
 }
 
 .hero p,
 .panel-heading p,
 .challenge-card small,
 .palette-chip small,
-.legend span {
+.legend span,
+.canvas-header p,
+.check-item,
+.summary-headline {
   color: #cbd5e1;
 }
 
 .eyebrow,
-.agent-badge {
+.agent-badge,
+.palette-group-title {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 6px 10px;
   border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.52);
+  background: rgba(15, 23, 42, 0.5);
   color: #93c5fd;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -104,7 +128,9 @@ button {
 
 .hero-card,
 .panel,
-.agent-card {
+.agent-card,
+.mini-card,
+.score-card {
   border: 1px solid rgba(148, 163, 184, 0.14);
   background: rgba(15, 23, 42, 0.78);
   box-shadow: 0 24px 80px rgba(2, 6, 23, 0.34);
@@ -113,7 +139,7 @@ button {
 
 .hero-card {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   padding: 18px;
   border-radius: 24px;
 }
@@ -123,21 +149,59 @@ button {
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.hero-metric:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
 .hero-metric strong {
-  font-size: 2.2rem;
+  font-size: 2.15rem;
 }
 
-.hero-metric span {
-  color: #cbd5e1;
+.hero-metric.compact strong {
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+.hero-metric span,
+.mini-label {
+  color: #94a3b8;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.hero-tags span,
+.legend span,
+.challenge-goal-preview,
+.tool-chip,
+.check-mark,
+.summary-stage {
+  border-radius: 999px;
+  background: rgba(30, 41, 59, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.hero-tags span,
+.challenge-goal-preview,
+.summary-stage {
+  padding: 8px 12px;
+  font-size: 0.88rem;
 }
 
 .studio-layout {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 320px minmax(420px, 1fr) 360px;
+  grid-template-columns: 340px minmax(460px, 1fr) 380px;
   gap: 20px;
   align-items: start;
 }
@@ -161,14 +225,18 @@ button {
   margin: 0;
 }
 
-.panel-heading p {
-  margin: 6px 0 0;
+.panel-heading p,
+.canvas-header p {
+  margin-top: 6px;
   font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .challenge-list,
 .palette-grid,
-.stats-list {
+.stats-list,
+.rubric-list,
+.checklist {
   display: grid;
   gap: 12px;
   margin-top: 14px;
@@ -177,21 +245,24 @@ button {
 .challenge-card,
 .palette-chip,
 .secondary-button,
-.ghost-button {
+.ghost-button,
+.tool-chip {
   border: 1px solid rgba(148, 163, 184, 0.16);
   border-radius: 18px;
   background: rgba(15, 23, 42, 0.78);
   color: #f8fafc;
   cursor: pointer;
-  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 
 .challenge-card:hover,
 .palette-chip:hover,
 .secondary-button:hover,
-.ghost-button:hover {
+.ghost-button:hover,
+.tool-chip:hover {
   transform: translateY(-1px);
   border-color: rgba(125, 211, 252, 0.5);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
 }
 
 .challenge-card {
@@ -202,15 +273,48 @@ button {
 }
 
 .challenge-card.selected,
-.palette-chip.active {
-  background: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.96));
+.palette-chip.active,
+.tool-chip.active {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
   border-color: rgba(96, 165, 250, 0.68);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.18);
 }
 
 .challenge-card span,
 .palette-chip strong {
   font-weight: 700;
+}
+
+.challenge-goal-preview {
+  display: inline-flex;
+  width: fit-content;
+  color: #bfdbfe;
+}
+
+.tool-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.tool-chip {
+  padding: 12px 14px;
+}
+
+.palette-groups {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.palette-group {
+  display: grid;
+  gap: 10px;
+}
+
+.palette-group-title {
+  width: fit-content;
 }
 
 .palette-chip {
@@ -229,11 +333,20 @@ button {
   flex: 0 0 auto;
 }
 
+.swatch.large {
+  width: 16px;
+  height: 16px;
+}
+
 .button-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 14px;
+}
+
+.button-row.triple {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .secondary-button,
@@ -243,6 +356,15 @@ button {
 
 .ghost-button {
   background: rgba(30, 41, 59, 0.78);
+}
+
+.ghost-button.full-width {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.ghost-button.danger {
+  border-color: rgba(248, 113, 113, 0.26);
 }
 
 .canvas-panel {
@@ -265,10 +387,8 @@ button {
 }
 
 .legend span {
-  border-radius: 999px;
   padding: 6px 10px;
-  background: rgba(30, 41, 59, 0.72);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
 }
 
 .canvas-frame {
@@ -277,6 +397,32 @@ button {
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.12);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.68), rgba(2, 6, 23, 0.88));
+}
+
+.canvas-footer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.mini-card,
+.score-card {
+  border-radius: 18px;
+  padding: 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.mini-card strong,
+.score-card strong,
+.summary-grid strong {
+  line-height: 1.4;
+}
+
+.agent-header {
+  display: grid;
+  gap: 10px;
 }
 
 .agent-card ul,
@@ -304,21 +450,65 @@ button {
   color: #93c5fd;
 }
 
-.stats-list {
-  margin-top: 8px;
-}
-
-.stat-item {
+.rubric-row,
+.stat-item,
+.check-item,
+.summary-grid {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.rubric-row,
+.stat-item,
+.check-item {
   padding: 12px 0;
   border-bottom: 1px solid rgba(148, 163, 184, 0.12);
 }
 
-.stat-item:last-child {
+.rubric-row:last-child,
+.stat-item:last-child,
+.check-item:last-child {
   border-bottom: 0;
+}
+
+.check-item.done {
+  color: #e2e8f0;
+}
+
+.check-mark {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #bfdbfe;
+}
+
+.summary-panel,
+.progress-panel,
+.stats-panel {
+  padding-top: 18px;
+}
+
+.summary-stage {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 14px;
+  color: #bfdbfe;
+}
+
+.summary-headline {
+  margin-top: 12px;
+  line-height: 1.55;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 16px;
 }
 
 .stat-label {
@@ -326,6 +516,13 @@ button {
   align-items: center;
   gap: 10px;
   color: #e2e8f0;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .empty-state {
@@ -338,18 +535,18 @@ button {
   white-space: nowrap;
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1450px) {
   .studio-layout {
-    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-columns: 300px minmax(0, 1fr);
   }
 
   .right-panel {
     grid-column: 1 / -1;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1080px) {
   .app-shell {
     padding: 18px;
   }
@@ -357,7 +554,11 @@ button {
   .hero,
   .studio-layout,
   .right-panel,
-  .button-row {
+  .canvas-footer,
+  .button-row,
+  .button-row.triple,
+  .tool-row,
+  .score-grid {
     grid-template-columns: 1fr;
   }
 
