@@ -3,6 +3,8 @@
 AI Creative Studio is a lightweight offline **AI + Minecraft-style creative learning demo** built with **Vite, React, and Three.js**.
 
 Phase 2 upgrades the original MVP into a stronger product-style prototype:
+- a polished startup-style landing page for the product narrative
+- integrated navigation between the landing page and the live studio
 - a richer world palette
 - more buildable object types and categories
 - better editing tools and affordances
@@ -15,6 +17,8 @@ Everything still runs locally with **no backend and no external model API**.
 ## What’s new in Phase 2
 
 ### Product/demo polish
+- a dedicated landing page that positions the product as an AI-powered 3D creative learning/game platform
+- launch CTA and in-app navigation into the existing studio experience
 - more polished hero and panel layout
 - improved visual hierarchy and card design
 - stronger in-app feedback with live scores and status cards
@@ -98,6 +102,8 @@ npm run dev
 
 Then open the local URL shown by Vite.
 
+The app now opens on the landing page by default. Use the launch CTA to enter the studio, or open `#studio` directly.
+
 ### Build for production
 
 ```bash
@@ -126,7 +132,7 @@ This keeps the prototype fully offline while making the feedback feel more dynam
 
 ## Project structure
 
-- `src/App.jsx` – app UI, challenge logic, tutor/critic logic, and 3D scene behavior
+- `src/App.jsx` – landing page, studio UI, challenge logic, tutor/critic logic, and 3D scene behavior
 - `src/styles.css` – product-style interface and responsive layout styling
 
 ## Notes
