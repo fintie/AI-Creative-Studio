@@ -118,6 +118,8 @@ npm run build
 This project is configured for GitHub Pages deployment at:
 - `https://fintie.github.io/AI-Creative-Studio/`
 
+_Last deployment refresh: trigger rebuild after Pages enablement._
+
 ### Preview production build
 
 ```bash
