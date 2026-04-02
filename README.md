@@ -4,7 +4,7 @@ AI Creative Studio is a lightweight offline **AI + Minecraft-style creative lear
 
 Phase 2 upgrades the original MVP into a stronger product-style prototype:
 - a polished startup-style landing page for the product narrative
-- integrated navigation between the landing page and the live studio
+- client-side routing between the landing page and the live studio
 - a richer world palette
 - more buildable object types and categories
 - better editing tools and affordances
@@ -13,6 +13,11 @@ Phase 2 upgrades the original MVP into a stronger product-style prototype:
 - a clearer progression loop with challenge goals, scoring, and project summary
 
 Everything still runs locally with **no backend and no external model API**.
+
+## Routes
+
+- `/` - landing page
+- `/studio` - live studio/demo experience
 
 ## What’s new in Phase 2
 
@@ -102,7 +107,7 @@ npm run dev
 
 Then open the local URL shown by Vite.
 
-The app now opens on the landing page by default. Use the launch CTA to enter the studio, or open `#studio` directly.
+The app now opens on the landing page by default. Use the launch CTA to enter the studio, or open `/studio` directly.
 
 ### Build for production
 
@@ -118,7 +123,7 @@ npm run preview
 
 ## How the offline AI works
 
-The Tutor Agent and Critic Agent are deterministic rule systems in `src/App.jsx`.
+The Tutor Agent and Critic Agent are deterministic rule systems in `src/components/StudioExperience.jsx`.
 They inspect the current world and derive feedback from metrics such as:
 - total object count
 - type coverage
@@ -132,7 +137,10 @@ This keeps the prototype fully offline while making the feedback feel more dynam
 
 ## Project structure
 
-- `src/App.jsx` – landing page, studio UI, challenge logic, tutor/critic logic, and 3D scene behavior
+- `src/App.jsx` – route definitions for landing and studio pages
+- `src/pages/LandingPage.jsx` – landing page content and section navigation
+- `src/pages/StudioPage.jsx` – studio route wrapper and back-navigation links
+- `src/components/StudioExperience.jsx` – studio UI, challenge logic, tutor/critic logic, and 3D scene behavior
 - `src/styles.css` – product-style interface and responsive layout styling
 
 ## Notes

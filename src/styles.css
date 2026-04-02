@@ -37,6 +37,11 @@ button {
   font: inherit;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
@@ -253,6 +258,7 @@ p {
 .primary-button,
 .secondary-button,
 .ghost-button,
+.link-button,
 .tool-chip,
 .challenge-card,
 .palette-chip {
@@ -265,7 +271,8 @@ p {
 
 .primary-button,
 .secondary-button,
-.ghost-button {
+.ghost-button,
+.link-button {
   padding: 12px 16px;
 }
 
@@ -277,6 +284,7 @@ p {
 
 .secondary-button,
 .ghost-button,
+.link-button,
 .tool-chip,
 .challenge-card,
 .palette-chip {
@@ -286,12 +294,31 @@ p {
 .primary-button:hover,
 .secondary-button:hover,
 .ghost-button:hover,
+.link-button:hover,
 .tool-chip:hover,
 .challenge-card:hover,
 .palette-chip:hover {
   transform: translateY(-1px);
   border-color: rgba(125, 211, 252, 0.5);
   box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minimal-link {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.minimal-link:hover {
+  box-shadow: none;
 }
 
 .landing-showcase {
